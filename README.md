@@ -3,8 +3,8 @@
 This is a basic LAMP stack environment built using Docker Compose. It consists following:
 
 * PHP
-* Apache
-* MySQL
+* Apache 2.4
+* MySQL 5.7
 * phpMyAdmin
 
 As of now, we have 3 different branches for different PHP versions. Use appropriate branch as per your php version need:
@@ -15,17 +15,54 @@ As of now, we have 3 different branches for different PHP versions. Use appropri
 
 ## Installation
 
-Clone this repository on your local computer and checkout the appropriate branch e.g. 7.1.x. Run the `docker-compose up -d`.
+Clone this repository on your local computer and checkout the appropriate branch e.g. 7.x.x. Run the `docker-compose up -d`.
 
 ```shell
 git clone https://github.com/gehlotanish/docker-php.git        
 cd docker-php/
 git fetch --all
-git checkout 7.1.x
+git checkout 7.x.x
 docker-compose up -d
 ```
 
 Your LAMP stack is now ready!! You can access it via `http://localhost`.
+
+#### Apache Modules
+
+By default following modules are enabled.
+
+* rewrite
+* headers
+* ssl
+* vhost_alias
+
+## Connect via SSH
+
+You can connect to web server using `docker exec` command to perform various operation on it. Use below command to login to container via ssh.
+
+```shell
+docker exec -it webserver /bin/bash
+docker exec -it mysql /bin/bash
+```
+
+## Configuration
+
+This package comes with default configuration options. You can modify them by creating `.env` file in your root directory.
+
+To make it easy, just copy the content from `sample.env` file and update the environment variable values as per your need.
+
+## phpMyAdmin
+
+phpMyAdmin is configured to run on port 8080. Use following default credentials.
+
+```shell
+http://localhost:8000/
+```
+
+## Redis
+
+It comes with Redis. It runs on default port `6379`.
+
 
 ## Configuration and Usage
 
