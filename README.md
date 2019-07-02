@@ -6,8 +6,9 @@ This is a basic LAMP stack environment built using Docker Compose. It consists f
 * Apache 2.4
 * MySQL 5.7
 * phpMyAdmin
+* redis
 
-As of now, we have 3 different branches for different PHP versions. Use appropriate branch as per your php version need:
+As of now, we have 4 different branches for different PHP versions. Use appropriate branch as per your php version need:
 * [5.6.x](https://github.com/gehlotanish/docker-php/tree/5.6.x)
 * [7.1.x](https://github.com/gehlotanish/docker-php/tree/7.1.x)
 * [7.2.x](https://github.com/gehlotanish/docker-php/tree/7.2.x)
@@ -62,7 +63,6 @@ http://localhost:8000/
 ## Redis
 
 It comes with Redis. It runs on default port `6379`.
-
 
 ## Configuration and Usage
 
