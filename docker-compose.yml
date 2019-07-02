@@ -2,7 +2,7 @@ version: "3"
 
 services:
   webserver:
-    image: cybersiegelab/php_7.2.x:latest
+    image: cybersiegelab/php_5.6.x:latest
    # build: 
    #   context: ./dockerBin/apache2
     container_name: 'webserver'

@@ -1,4 +1,4 @@
-FROM php:7.2-apache
+FROM php:5.6-apache
 
 RUN apt-get -y update --fix-missing
 RUN apt-get upgrade -y
@@ -14,12 +14,9 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 
 
 # Install xdebug
-RUN pecl install xdebug-2.6.0
+RUN pecl install xdebug-2.5.5
 RUN docker-php-ext-enable xdebug
 
-# Install redis
-RUN pecl install redis-4.0.1
-RUN docker-php-ext-enable redis
 
 # Other PHP7 Extensions
 
@@ -43,7 +40,6 @@ RUN apt-get -y  install openssl
 RUN docker-php-ext-install mbstring
 
 RUN apt-get -y install libssl-dev
-RUN docker-php-ext-install phar
 RUN docker-php-ext-install bcmath
 
 RUN apt-get -y install  libbz2-dev
@@ -64,4 +60,10 @@ RUN docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-di
 RUN docker-php-ext-install -j$(nproc) gd
 
 # Enable apache modules
+RUN rm -rf /var/lib/apt/lists/*
+
 RUN a2enmod rewrite headers ssl vhost_alias
+
+EXPOSE 80 443
+
+ENTRYPOINT ["/usr/sbin/apache2ctl", "-D", "FOREGROUND"]
