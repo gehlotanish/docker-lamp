@@ -2,8 +2,9 @@ version: "3"
 
 services:
   webserver:
-    build: 
-      context: ./dockerBin/apache2
+    image: cybersiegelab/php_7.1.x:latest
+   # build: 
+   #   context: ./dockerBin/apache2
     container_name: 'webserver'
     restart: 'always'
     ports:
